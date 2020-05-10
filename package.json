@@ -1,0 +1,19 @@
+{
+  "name": "io-ts-isodatetime",
+  "version": "1.0.0",
+  "description": "A gcanti/io-ts Type Enhancer for ISO Date & Datetime",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "license": "MIT",
+  "dependencies": {
+    "date-fns": "^2.13.0",
+    "io-ts": "^2.2.2",
+    "io-ts-types": "^0.5.6"
+  },
+  "scripts": {
+    "build": "rm -rf ./dist & tsc"
+  },
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  }
+}
