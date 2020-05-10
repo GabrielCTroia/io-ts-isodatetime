@@ -9,7 +9,7 @@ var lib_1 = require("./lib");
 /**
  * Accepts input as 2011-09-21!
  */
-exports.ISODate = new io.Type('ISODate', function (u) { return io.string.is(u) && lib_1.isValidISODate(u); }, function (u, c) { return Either_1.either.chain(io.string.validate(u, c), function (s) {
+exports.isoDate = new io.Type('ISODate', function (u) { return io.string.is(u) && lib_1.isValidISODate(u); }, function (u, c) { return Either_1.either.chain(io.string.validate(u, c), function (s) {
     try {
         return io.success(lib_1.toISODate(s));
     }
@@ -20,7 +20,7 @@ exports.ISODate = new io.Type('ISODate', function (u) { return io.string.is(u) &
 /**
  * Accepts input as 2019-10-31T00:16:59.998Z
  */
-exports.ISODateFromISOString = new io.Type('ISODateFromISOString', function (u) { return io.string.is(u) && date_fns_1.parseISO(u) instanceof Date; }, function (u, c) { return Either_1.either.chain(io.string.validate(u, c), function (s) {
+exports.isoDateFromIsoString = new io.Type('ISODateFromISOString', function (u) { return io.string.is(u) && date_fns_1.parseISO(u) instanceof Date; }, function (u, c) { return Either_1.either.chain(io.string.validate(u, c), function (s) {
     try {
         return io.success(lib_1.toISODate(s.slice(0, 10)));
     }
@@ -28,7 +28,7 @@ exports.ISODateFromISOString = new io.Type('ISODateFromISOString', function (u) 
         return io.failure(u, c);
     }
 }); }, String);
-exports.ISODateTimeFromISOString = new io.Type('ISODateTimeFromISOString', function (u) { return io.string.is(u) && date_fns_1.parseISO(u) instanceof Date; }, function (u, c) { return Either_1.either.chain(io.string.validate(u, c), function (s) {
+exports.isoDateTimeFromIsoString = new io.Type('ISODateTimeFromISOString', function (u) { return io.string.is(u) && date_fns_1.parseISO(u) instanceof Date; }, function (u, c) { return Either_1.either.chain(io.string.validate(u, c), function (s) {
     try {
         return io.success(ISODateTime_1.toISODateTime(s));
     }
@@ -39,7 +39,7 @@ exports.ISODateTimeFromISOString = new io.Type('ISODateTimeFromISOString', funct
 /**
  * Accepts input as UnixTime
  */
-exports.ISODateFromUnixTime = new io.Type('ISODateFromUnixTime', function (u) { return DateFromUnixTime_1.DateFromUnixTime.is(u); }, function (u, c) { return Either_1.either.chain(io.number.validate(u, c), function (n) {
+exports.isoDateFromUnixTime = new io.Type('ISODateFromUnixTime', function (u) { return DateFromUnixTime_1.DateFromUnixTime.is(u); }, function (u, c) { return Either_1.either.chain(io.number.validate(u, c), function (n) {
     try {
         var dateAsISOString = new Date(n * 1000).toISOString();
         return io.success(lib_1.toISODate(dateAsISOString.slice(0, 10)));
