@@ -16,7 +16,7 @@ import {
 /**
  * Accepts input as 2011-09-21!
  */
-export const ISODate = new io.Type<ISODateType, string, unknown>(
+export const isoDate = new io.Type<ISODateType, string, unknown>(
   'ISODate',
   (u): u is ISODateType => io.string.is(u) && isValidISODate(u),
   (u, c) => either.chain(io.string.validate(u, c), (s) => {
@@ -32,7 +32,7 @@ export const ISODate = new io.Type<ISODateType, string, unknown>(
 /**
  * Accepts input as 2019-10-31T00:16:59.998Z
  */
-export const ISODateFromISOString = new io.Type<ISODateType, string, unknown>(
+export const isoDateFromIsoString = new io.Type<ISODateType, string, unknown>(
   'ISODateFromISOString',
   (u): u is ISODateType => io.string.is(u) && parseISO(u) instanceof Date,
   (u, c) => either.chain(io.string.validate(u, c), (s) => {
@@ -45,7 +45,7 @@ export const ISODateFromISOString = new io.Type<ISODateType, string, unknown>(
   String,
 );
 
-export const ISODateTimeFromISOString = new io.Type<ISODateTimeType, string, unknown>(
+export const isoDateTimeFromIsoString = new io.Type<ISODateTimeType, string, unknown>(
   'ISODateTimeFromISOString',
   (u): u is ISODateTimeType => io.string.is(u) && parseISO(u) instanceof Date,
   (u, c) => either.chain(io.string.validate(u, c), (s) => {
@@ -61,7 +61,7 @@ export const ISODateTimeFromISOString = new io.Type<ISODateTimeType, string, unk
 /**
  * Accepts input as UnixTime
  */
-export const ISODateFromUnixTime = new io.Type<ISODateType, number, unknown>(
+export const isoDateFromUnixTime = new io.Type<ISODateType, number, unknown>(
   'ISODateFromUnixTime',
   (u): u is ISODateType => DateFromUnixTime.is(u),
   (u, c) => either.chain(io.number.validate(u, c), (n) => {
